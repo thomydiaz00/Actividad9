@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+     <!--Iconos de FontAwesome-->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+     <script src="https://kit.fontawesome.com/76bcb4e810.js" crossorigin="anonymous"></script>
+ 
+
+    <title>Listado de Campañas</title>
+</head>
+<body>
+<!--Navbar header-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">
+    <h4>Gestion de Campañas</h4>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+          <li class="nav-item active ml-3">
+            <a class="nav-link" href="index.html">Home </a>
+          </li>
+          <li class="nav-item ml-3">
+            <a class="nav-link" href="#">Listado<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item ml-3">
+            <a class="nav-link" href="#">Ejemplo 2</a>
+          </li>
+          <li class="nav-item ml-3">
+            <a class="nav-link" href="#">Ejemplo 3</a>
+          </li>
+      </ul>
+    </div>
+  </nav>
+<!--Barra de busqueda a implementar-->
+<div class="container-fluid pt-2">
+    <form>
+        <div class="input-group">
+          <input type="text" class= "form-control" id="barra_busqueda" required placeholder="Buscar...">
+          <div class="input-group-append" id="button-addon4">
+            <input type="submit" value="Search" button class="btn btn-outline-secondary"/>
+            <input type="button" value="Clear" id="btnClear"  button class="btn btn-outline-secondary"/>
+          </div>	
+        </div>	 	  	
+      </form>
+  </div>
+<!--Creacion de la tabla, definimos las columnas-->
+<div class="container-fluid mt-2">
+    <table class="table-responsive table-bordered table-striped text-center">
+        <thead>
+            <tr>
+                <th scope="col-sm">Campaña</th>
+                <th scope="col-sm">Localidades</th>
+                <th scope="col-sm">Fecha inicio</th>
+                <th scope="col-sm">Fecha fin</th>
+                <th scope="col-sm">Cliente</th>
+                <th scope="col-sm">Telefono</th>
+                <th scope="col-sm">Email</th>
+                <th scope="col-sm">CUIL/CUIT</th>
+                <th scope="col-sm">Acciones</th>
+
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- ' tr th:each= "campania:${campanias}" ' genera las tablas para c/u con thymeleaf-->
+            <!--Aca van los datos de la tabla, cada tr va a ser una nueva tabla-->
+            <tr>
+                <th>Primera campaña</th>
+                <td>Areco, Sarmiento</td>
+                <td>21-09-20</td>
+                <td>21-10-20</td>
+                <td>02498898912</td>
+                <td>Juan Perez</td>
+                <td>jperez@algo.com</td>
+                <td>2-11222333-5</td>
+                <td>
+                    <div class="d-flex align-items-stretch">
+                        <div class="p-2">
+                            <a th:href="#" class ="btn btn-warning"> 
+                            <span class="fa fa-pencil fa-fw"></span>Editar!
+                            </a>
+                        </div>
+                        
+                        <div class="p-2">
+                            <a th:onclick="#" class = "btn btn-danger">
+                            <span class="fas fa-trash-alt"></span>Eliminar!
+                            </a>
+                        </div>
+                        <div class="p-2">
+                            <a th:onclick="#" class = "btn btn-primary">
+                            <span class="fas fa-eye"></span>Mensaje
+                            </a>
+                        </div>
+                        </div>          
+
+                </td>
+
+            </tr>
+
+            <tr>
+                <th>Segunda campaña</th>
+                <td>Areco, Sarmiento</td>
+                <td>22-09-20</td>
+                <td>29-10-20</td>
+                <td>111333444</td>
+                <td>Maria Gomez</td>
+                <td>mgomez@algo.com</td>
+                <td>2-332212333-5</td>
+                <td>
+                    <div class="d-flex align-items-stretch">
+                        <div class="p-2">
+                            <a th:href="#" class ="btn btn-warning"> 
+                            <span class="fa fa-pencil fa-fw"></span>Editar!
+                            </a>
+                        </div>
+                        
+                        <div class="p-2">
+                            <a th:onclick="#" class = "btn btn-danger">
+                            <span class="fas fa-trash-alt"></span>Eliminar!
+                            </a>
+                        </div>
+                        <div class="p-2">
+                            <a th:onclick="#" class = "btn btn-primary">
+                            <span class="fas fa-eye"></span>Mensaje
+                            </a>
+                        </div>
+                        </div>          
+
+                </td>
+
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>    
+</body>
+</html>

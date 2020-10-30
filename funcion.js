@@ -51,13 +51,11 @@ function validar(){
             
             document.getElementById('formulario').submit();
             return true;
-        
         case 0:
             // b == a
             swal("Error!", "La campaña debe durar por lo menos 24 Horas", "error");
             returnToPreviousPage();
             return false;
-            
         case 1:
             // b > a
             swal("Error!", "La fecha de finalización debe ser posterior a la de inicio", "error");
@@ -65,9 +63,7 @@ function validar(){
             return false;
             
         default:
-            
             break;
-            
     }
 }
 
