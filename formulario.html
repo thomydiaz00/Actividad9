@@ -13,7 +13,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <title>Formulario</title>
+    <!--funcion para verificar fecha-->
     <script src="funcion.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,7 +31,7 @@
         </div>
         <div class="card-body">
             
-            <form id="formulario" onsubmit="validar()">
+            <form id="formulario">
                 <div class="form-group">
                     <label for="nombre_campania">Nombre de campaña</label>
                     <input type="text" class="form-control" id="nombre_campania">
@@ -83,7 +85,7 @@
                 </div>
                 
                 <button type="reset" class="btn btn-warning">Reset</button>
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" onclick="validar()" class="btn btn-primary">Guardar</button>
                 
             </form>
 

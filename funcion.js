@@ -48,12 +48,13 @@ function validar(){
     switch (res) {
         case -1:
             // a < b
-            alert("Formulario enviado!");
+            
+            document.getElementById('formulario').submit();
             return true;
             
         case 1:
             // b > a
-            alert("la fecha fin no puede ser mayor a la fecha inicio");
+            swal("Error!", "La fecha de finalización debe ser posterior a la de inicio", "error");
             returnToPreviousPage();
             return false;
             
