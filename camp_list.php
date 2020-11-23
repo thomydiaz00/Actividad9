@@ -24,7 +24,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
         <li class="nav-item active ml-3">
-        <a class="nav-link" href="/index.html">Home </a>
+        <a class="nav-link" href="index.html">Home </a>
         </li>
         <li class="nav-item ml-3">
         <a class="nav-link" href="#">Listado<span class="sr-only">(current)</span></a>
@@ -33,32 +33,14 @@
     </ul>
     </div>
     </nav>
-    <div class="container pt-3">
-        <div class="alert alert-success" role="alert">
-            Registro agregado!
-        </div>
-    </div>
-    
-    <?php
-            include "../conexion/conn.php";
-            //estos son los datos que traemos desde el formulario. Hacemos referencia con su 'name' en html
-            $razon_social=$_POST['razon_social'];
-            $nombre_campania=$_POST['nombre_campania'];
-            $nombre_cliente=$_POST['nombre_cliente'];
-            $fecha_inicio=$_POST['fecha_inicio'];
-            $fecha_fin=$_POST['fecha_fin'];
-            $mensaje=$_POST['mensaje'];
-            $cuil= $_POST['cuil'];
-            $email= $_POST['email'];
-            $telefono= $_POST['numero_telefono_cliente'];
-            // Definimos la funcion select para mostrar toda la tabla"
-            $sql="Select * from Campanias ";
-            $insertDatos= "INSERT INTO Campanias (RazonSocial,Campania, NombreCliente,FechaInicio,FechaFin,Mensaje,Cuil,Email,Telefono) VALUES ('$razon_social','$nombre_campania','$nombre_cliente', '$fecha_inicio','$fecha_fin','$mensaje','$cuil','$email','$telefono')";
-            //funciones de insert para cada dato que traemos desde el formulario
+    <!--Misma logica que en inicio.php solo que no agregamos, solo usamos iteradores para traer los datos e la b.d-->
 
-            //al ejecutarse result se ejecutara la sentencia sql HAY QUE ESCAPAR DE LAS COMILLAS CON '\'
+    <?php
+            include "php/conexion/conn.php";
+            //estos son los datos que traemos desde el formulario. Hacemos referencia con su 'name' en html
+           
+            $sql="Select * from Campanias ";
             $result=odbc_exec($cid,$sql)or die(exit("Error en odbc_exec"));
-            $resultInsertDatos = odbc_exec($cid,$insertDatos)or die(exit("error cargando datos"));
             if (!$result)
             {exit("Error in SQL");}
             
@@ -107,32 +89,6 @@
                         echo "</tbody>"
                              ."</table>"
                         ."</div>";
-                        echo "<script language = 'javascript'>
-                            $('.tabla_campanias').DataTable({
-                                \"language\": {
-                                \"sProcessing\":     \"Procesando...\",
-                                \"sLengthMenu\":     \"Mostrar _MENU_ registros\",
-                                \"sZeroRecords\":    \"No se encontraron resultados\",
-                                \"sEmptyTable\":     \"Ningún dato disponible en esta tabla\",
-                                \"sInfo\":           \"Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros\",
-                                \"sInfoEmpty\":      \"Mostrando registros del 0 al 0 de un total de 0 registros\",
-                                \"sInfoFiltered\":   \"(filtrado de un total de _MAX_ registros)\",
-                                \"sInfoPostFix\":    \"\",
-                                \"sSearch\":         \"Buscar:\",
-                                \"sUrl\":            \"\",
-                                \"sInfoThousands\":  \",\",
-                                \"sLoadingRecords\": \"Cargando...\",
-                                \"oPaginate\": {
-                                \"sFirst\":    \"Primero\",
-                                \"sLast\":     \"Último\",
-                                \"sNext\":     \"Siguiente\",
-                                \"sPrevious\": \"Anterior\"
-                            } );
-                                
-                            </script>
-                            
-                        
-                        ";
         
             ?>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>    
