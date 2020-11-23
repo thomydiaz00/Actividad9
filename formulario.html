@@ -14,7 +14,7 @@
 
     <title>Formulario</title>
     <!--funcion para verificar fecha-->
-    <script src="funcion.js"></script>
+    <script src="./js/funcion.js" ></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,11 +31,16 @@
         </div>
         <div class="card-body">
             
-            <form id="formulario">
+            <form id="formulario" action="./php/components/inicio.php" method="POST" target="_blank">
                 <div class="form-group">
                     <label for="nombre_campania">Nombre de campaña</label>
-                    <input type="text" class="form-control" id="nombre_campania">
+                    <input type="text" class="form-control" id="nombre_campania" name="nombre_campania">
                 </div>
+                <div class="form-group">
+                    <label for="razon_social">Razon social de la empresa</label>
+                    <input type="text" class="form-control" id="razon_social" name="razon_social">
+                </div>
+                
                 
                 <div class="form-grup">
                     <label for="localidad">Seleccionar localidades:</label>
@@ -49,40 +54,37 @@
                 
                 <div class="form-group">
                     <label for="fecha_inicio">Fecha de inicio</label>
-                    <input type="date" class="form-control" id="fecha_inicio"/>
+                    <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio"/>
                 </div>
                 <div class="form-group">
                     <label for="fecha_fin">Fecha de finalización</label>
-                    <input type="date"  class="form-control" id="fecha_fin"/>
+                    <input type="date"  class="form-control" id="fecha_fin" name="fecha_fin" />
                 </div>
 
                 <div class="form-group">
                     <label for="nombre_cliente">Nombre del cliente</label>
-                    <input type="text" class="form-control" id="nombre_cliente"/>
+                    <input type="text" class="form-control" id="nombre_cliente" name="nombre_cliente"/>
                 </div>
                 <div class="form-group">
                     <label for="numero_telefono_cliente">Número de teléfono</label>
-                    <input type="number" class="form-control" id="numero_telefono_cliente"/>
+                    <input type="number" class="form-control" id="numero_telefono_cliente"  name="numero_telefono_cliente"/>
                 </div>
                 <div class="form-group">
                     <label for="email">Dirección de correo email</label>
-                    <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com"/>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="nombre@ejemplo.com"/>
                   </div>
 
                 <div class="form-group">
                     <label for="cuil">CUIL/CUIT</label>
-                    <input type="number" min="0" class="form-control" id="cuil"/>
+                    <input type="number" min="0" class="form-control" id="cuil"  name="cuil"/>
                 </div>
                 <div class="form-group">
                     <label for="mensaje">Mensaje a enviar</label>
-                    <textarea type="text" maxlength="160" class="form-control" rows="3" id="mensaje"></textarea>
+                    <textarea type="text" maxlength="160" class="form-control" rows="3" id="mensaje" name="mensaje"></textarea>
                     <small id="cantidad_caracteres" class="form-text text-muted">El mensaje debe tener como máximo 160 caracteres</small>
 
                 </div>
-                <div class="form-group">
-                    <label for="cantidad_mensajes">CUIL/CUIT</label>
-                    <input type="number" min="0" class="form-control" id="cantidad_mensajes"/>
-                </div>
+                
                 
                 <button type="reset" class="btn btn-warning">Reset</button>
                 <button type="button" onclick="validar()" class="btn btn-primary">Guardar</button>
