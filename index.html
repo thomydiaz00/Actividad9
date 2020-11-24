@@ -10,47 +10,44 @@
 </head>
 <body>
   <!--Navbar header-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">
-    <h4>Gestion de Campañas</h4>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Navbar para Menu: Gestion Campañas -->
+      <a class="navbar-brand" href="#">Gestión de Campañas</a>
+    
+      <!-- Botoneras:-->
       <ul class="navbar-nav">
-          <li class="nav-item active ml-3">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item ml-3">
-            <a class="nav-link" href="camp_list.html">Listado</a>
-          </li>
-          <li class="nav-item ml-3">
-            <a class="nav-link" href="#">Ejemplo 2</a>
-          </li>
-          <li class="nav-item ml-3">
-            <a class="nav-link" href="#">Ejemplo 3</a>
-          </li>
+        <li class="nav-item">
+        <div class="btn-group">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Campaña
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="formulario.html">Agregar</a> 
+      <!-- En href: dire. a donde redirecciona. Acá debería ser al html que Thomas realizo: formulario.html -->
+        <a class="dropdown-item" href="camp_list.php">Listar</a>
+      <!-- En href: dire. a donde redirecciona. En este caso: el camp_list.html -->
+      </div>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Reportes
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="reportesagregar.html">Agregar</a>
+      </div>
+    </div>
+        </li>
       </ul>
-    </div>
-  </nav>
+    </nav>
   <!--Bienvenida-->
-  <div class="jumbotron">
-    <h1 class="display-4">Bienvenido!</h1>
-    <div class="d-flex flex-row">
-      <div class="p-2 span 5">
-        <p class="lead">Esta página permite el control de las campañas publicitarias</p> 
-      </div>
-      <div class="p-2 span 7">
-        <a class="btn btn-primary btn-lg mt-2" href="formulario.html" role="button">Nueva Campaña</a>
-        <a class="btn btn-secondary btn-lg mt-2" href="camp_list.php" role="button">Listado de Campañas</a>
-
+  <div style="height: 100%; left: 0; position: absolute; text-align: center; width: 100%; display: table">
+    <div style="display: table-row">
+      <div style="display: table-cell; vertical-align:middle;">
+        <div style="text-align: left; display: inline-block;">
+         <h1 class="display-1">Bienvenidos</h1>
+        </div>
       </div>
     </div>
-
-    <hr class="my-4">
-    <p>Permite la alta, baja, modificacion de las mismas</p>
   </div>
         
    
