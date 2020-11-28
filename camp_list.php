@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
@@ -62,8 +62,11 @@
             include "php/conexion/conn.php";
             //estos son los datos que traemos desde el formulario. Hacemos referencia con su 'name' en html
            
-            $sql="Select * from Campanias ";
-            $result=odbc_exec($cid,$sql)or die(exit("Error en odbc_exec"));
+            //$sql="Select * from Campanias ";
+            //$result=odbc_exec($cid,$sql)or die(exit("Error en odbc_exec"));
+            // Leer registros:
+            $sqlCom = "Select * from Campanias";
+            $result = $conn->query($sqlCom);
             if (!$result)
             {exit("Error in SQL");}
             
@@ -82,17 +85,17 @@
                                 . "</tr>"
                             ."</thead>"
                             ."<tbody>";
-                            while (odbc_fetch_row($result))
+                            while ($rCom=$result->fetch_array())
                             {
-                            $razon_iterador=odbc_result($result,"RazonSocial");
-                            $campania_iterador= odbc_result($result,"Campania");
-                            $cliente_iterador=odbc_result($result,"NombreCliente");
-                            $inicio_iterador=odbc_result($result,"FechaInicio");
-                            $fin_iterador=odbc_result($result,"FechaFin");
-                            $cuil_iterador=odbc_result($result,"Cuil");
-                            $mensaje_iterador=odbc_result($result,"Mensaje");
+                            $razon_iterador=$rCom["RazonSocial"];
+                            $campania_iterador= $rCom["Campania"];
+                            $cliente_iterador=$rCom["NombreCliente"];
+                            $inicio_iterador=$rCom["FechaInicio"];
+                            $fin_iterador=$rCom["FechaFin"];
+                            $cuil_iterador=$rCom["Cuil"];
+                            $mensaje_iterador=$rCom["Mensaje"];
 
-                            $email_iterador=odbc_result($result,"Email");
+                            $email_iterador=$rCom["Email"];
                             echo "<tr>"
                                     ."<td>$razon_iterador</td>"
                                     ."<td>$campania_iterador</td>"
