@@ -70,40 +70,40 @@
             <form id="formulario" action="modificarcampaña.php" method="POST" target="_blank">
                 <div class="form-group">
                     <label for="nombre_campania">Nombre de campaña</label>
-                    <input type="text" class="form-control" id="nombre_campania" name="nombre_campania" value=<?php echo $campania?>>
+                    <input type="text" class="form-control" id="nombre_campania" name="nombre_campania" value=<?php echo "\"$campania\""?>>
                     
                 </div>
                 <div class="form-group">
                     <label for="razon_social">Razon social de la empresa</label>
-                    <input type="text" class="form-control" id="razon_social" name="razon_social" value=<?php echo "$registro->RazonSocial";?>>
+                    <input type="text" class="form-control" id="razon_social" name="razon_social" value=<?php echo "\"$registro->RazonSocial\"";?>>
                 </div>
                  
                 <div class="form-group">
                     <label for="fecha_inicio">Fecha de inicio</label>
-                    <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" value=<?php echo "$registro->FechaInicio";?>>
+                    <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" value=<?php echo "\"$registro->FechaInicio\"";?>>
                 </div>
                 <div class="form-group">
                     <label for="fecha_fin">Fecha de finalización</label>
-                    <input type="date"  class="form-control" id="fecha_fin" name="fecha_fin" value=<?php echo "$registro->FechaFin";?>>
+                    <input type="date"  class="form-control" id="fecha_fin" name="fecha_fin" value=<?php echo "\"$registro->FechaFin\"";?>>
                 </div>
 
                 <div class="form-group">
                     <label for="nombre_cliente">Nombre del cliente</label>
-                    <input type="text" class="form-control" id="nombre_cliente" name="nombre_cliente"  value=<?php echo "$registro->NombreCliente";?>>
+                    <input type="text" class="form-control" id="nombre_cliente" name="nombre_cliente"  value=<?php echo "\"$registro->NombreCliente\"";?>>
                 </div>
                 
                 <div class="form-group">
                     <label for="email">Dirección de correo email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="nombre@ejemplo.com" value=<?php echo "$registro->Email";?>>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="nombre@ejemplo.com" value=<?php echo "\"$registro->Email\"";?>>
                   </div>
 
                 <div class="form-group">
                     <label for="cuil">CUIL/CUIT</label>
-                    <input type="number" min="0" class="form-control" id="cuil"  name="cuil" value=<?php echo "$registro->Cuil";?>>
+                    <input type="number" min="0" class="form-control" id="cuil"  name="cuil" value=<?php echo "\"$registro->Cuil\"";?>>
                 </div>
                 <div class="form-group">
                     <label for="mensaje">Mensaje</label>
-                    <input type="text" class="form-control" rows="3" id="mensaje" name="mensaje" value=<?php echo "$registro->Mensaje";?>>
+                    <input type="text" class="form-control" rows="3" id="mensaje" name="mensaje" value=<?php echo "\"$registro->Mensaje\"";?>>
                 </div>
                 
                 

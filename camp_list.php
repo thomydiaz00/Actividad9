@@ -56,7 +56,7 @@
     </div>
     <!--Misma logica que en inicio.php solo que no agregamos, solo usamos iteradores para traer los datos e la b.d-->
     <div class="d-flex justify-content-center pt-2">
-        <a class="btn btn-lg btn-primary" href="formulario.html">Agregar Campaña</a>
+        <a class="btn btn-lg btn-primary" href="formulario.php">Agregar Campaña</a>
     </div>
     <?php
             include_once "php/conexion/connPDO.php";
