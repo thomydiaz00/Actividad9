@@ -59,73 +59,62 @@
         <a class="btn btn-lg btn-primary" href="formulario.html">Agregar Campaña</a>
     </div>
     <?php
-            include "php/conexion/conn.php";
-            //estos son los datos que traemos desde el formulario. Hacemos referencia con su 'name' en html
-           
-            //$sql="Select * from Campanias ";
-            //$result=odbc_exec($cid,$sql)or die(exit("Error en odbc_exec"));
-            // Leer registros:
-            $sqlCom = "Select * from Campanias";
-            $result = $conn->query($sqlCom);
-            if (!$result)
-            {exit("Error in SQL");}
-            
-            echo   "<div class= \"container pt-3\">"
-                        ."<table class=\"table table-striped table-bordered table-responsive tabla-campanias\">"
-                            ."<thead>"
-                                . "<tr>"
-                                .    "<th class=\"col-sm-1\">Razon social</th>"
-                                .    "<th class=\"col-sm-1\">Campaña</th>"
-                                .    "<th class=\"col-sm-1\">Cliente</th>"
-                                .    "<th class=\"col-sm-1\">Fecha Inicio</th>"
-                                .    "<th class=\"col-sm-1\">Fecha fin</th>"
-                                .    "<th class=\"col-sm-1\">Cuil</th>"
-                                .    "<th class=\"col-sm-1\">Email</th>"
-                                .    "<th class=\"col-sm-1\">Mensaje</th>"
-                                . "</tr>"
-                            ."</thead>"
-                            ."<tbody>";
-                            while ($rCom=$result->fetch_array())
-                            {
-                            $razon_iterador=$rCom["RazonSocial"];
-                            $campania_iterador= $rCom["Campania"];
-                            $cliente_iterador=$rCom["NombreCliente"];
-                            $inicio_iterador=$rCom["FechaInicio"];
-                            $fin_iterador=$rCom["FechaFin"];
-                            $cuil_iterador=$rCom["Cuil"];
-                            $mensaje_iterador=$rCom["Mensaje"];
-
-                            $email_iterador=$rCom["Email"];
-                            echo "<tr>"
-                                    ."<td>$razon_iterador</td>"
-                                    ."<td>$campania_iterador</td>"
-                                    ."<td>$cliente_iterador</td>"
-                                    ."<td>$inicio_iterador</td>"
-                                    ."<td>$fin_iterador</td>"
-                                    ."<td>$cuil_iterador</td>"
-                                    ."<td>$email_iterador</td>"
-                                    ."<td>$mensaje_iterador</td>"
-                                    ."<td>"
-                                    ."<div class=\"d-flex align-items-stretch\">"
-                                        ."<div class=\"p-2\">" 
-                                            ."<a class =\"btn btn-warning\">" 
-                                            ."<span class=\"fa fa-pencil fa-fw\"></span>Editar"
-                                            ."</a>" 
-                                        ."</div>"
-                                        ."<div class=\"p-2\">"
-                                            ."<a  class = \"btn btn-danger\">"
-                                            ."<span class=\"fas fa-trash-alt\"></span>Eliminar!"
-                                            ."</a>"
-                                        ."</div>" 
-                                    ."</td>"
-                                 ."</tr>";
-                                }
-            
-                        echo "</tbody>"
-                             ."</table>"
-                        ."</div>";
-        
+            include_once "php/conexion/connPDO.php";
+            $sqlCampanias = $base_de_datos->query("Select * from Campanias;");
+            $registros = $sqlCampanias->fetchAll(PDO::FETCH_OBJ);
             ?>
+            <div class= "container pt-3">
+                <table class="table table-striped table-bordered table-responsive tabla_campanias">
+                    <thead>
+                        <tr>
+                            <th class="col-sm-1">Razon social</th>
+                            <th class="col-sm-1">Campaña</th>
+                            <th class="col-sm-1">Cliente</th> 
+                            <th class="col-sm-1">Fecha Inicio</th>
+                            <th class="col-sm-1">Fecha fin</th>
+                            <th class="col-sm-1">Cuil</th>
+                            <th class="col-sm-1">Email</th>
+                            <th class="col-sm-1">Mensaje</th>
+                            <th class="col-sm-1">Acciones</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <!--Registros de la bd-->           
+                    <?php foreach($registros as $registro) { ?>     
+                        <tr>
+                            <td><?php echo $registro-> RazonSocial ?></td>
+                            <td><?php echo $registro-> Campania ?></td>
+                            <td><?php echo $registro-> NombreCliente ?></td>
+                            <td><?php echo $registro-> FechaInicio ?></td>
+                            <td><?php echo $registro-> FechaFin ?></td>
+                            <td><?php echo $registro-> Cuil ?></td>
+                            <td><?php echo $registro-> Email ?></td>
+                            <td><?php echo $registro-> Mensaje ?></td>
+                            <td>
+                                <form action="eliminar.php" method="POST">
+                                        <input type="hidden" value="<?php echo $registro-> Campania?>" name="campania_a_eliminar" >
+                                        <input type="submit" value="Eliminar" name="eliminar" >
+
+                                </form>
+                                <form action="modificar.php" method="POST">
+                                        <input type="hidden" value="<?php echo $registro-> Campania?>" name="campania_a_editar" >
+                                        <input type="submit" value="Editar" name="editar" >
+
+                                </form>
+                            </td>
+
+                        </tr>
+                    
+                    <?php } ?>
+                    
+                        
+    
+                </tbody>
+                </table>
+            </div>
+
+            
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>    
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
@@ -133,6 +122,40 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"></script>
     <script>
+    $('.tabla_campanias').DataTable({
+      "language": {
+        "sProcessing":     "Procesando...",
+        "sLengthMenu":     "Mostrar _MENU_ registros",
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Buscar campaña:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+        "sFirst":    "Primero",
+        "sLast":     "Último",
+        "sNext":     "Siguiente",
+        "sPrevious": "Anterior"
+    },
+    "oAria": {
+        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+    },
+    "buttons": {
+        "copy": "Copiar",
+        "colvis": "Visibilidad"
+    }
+    }
+       
+  
+ 
+  } );
+</script>
     
     
   
